@@ -10,6 +10,8 @@ This release uses the paper's stable log-domain PL formulation exclusively. The 
 
 Geometry, group rendering, balanced row sampling, natural-mixed index scheduling, and alpha/K schedules were compared against historical functions on controlled inputs. Their controlled outputs match exactly. The new map-style wrapper assigns deterministic per-row/per-group seeds, shuffles views through a rolling index buffer, and uses a bounded group cache. Worker/rank execution and random streams differ from the historical iterable loader; bitwise reproduction of its full training stream is not claimed.
 
+Group transforms seed the CPU augmentation generator while preserving the surrounding Python/CPU state and leaving CUDA training RNG untouched. This is covered by a CPU/CUDA regression check.
+
 Sparse SCE values and gradients match historical SCE, including repeated labels. Stable PL and mixed loss agree with historical losses on well-conditioned distinct-label float32/float64 inputs. Extreme-logit correctness is checked against independent remaining-set mathematics rather than the historical clamped calculation.
 
 ## Selected training configurations

@@ -9,7 +9,7 @@
     "torchvision": "0.29.1+cpu",
     "timm": "1.0.30"
   },
-  "pytest_passed": 24,
+  "pytest_passed": 25,
   "extraction": {
     "geometry": "exact",
     "renderer": "exact",
@@ -154,11 +154,11 @@
     }
   },
   "upstream_timm_base": "370df82133b13cad31458b9525e067011f4bae5c",
-  "clean_install": "Wheel module bytes match source; import is from independent environment site-packages; 24 tests pass",
+  "clean_install": "Wheel module bytes match source; import is from independent environment site-packages; 25 tests pass",
   "implementation_sha256": {
     "src/treemapmix/__init__.py": "7949a8f51d0bc6fe699e0c21bda8391ce297e8ebd36ac076bbd46219401d5323",
     "src/treemapmix/augmentation.py": "40d15853ddca023cf13fc7cfd7f3a255513bcd084d1e76bfc9667b570de82339",
-    "src/treemapmix/data.py": "fa89733fb9a1397802fe89723409cc9f4a5ceb22e35bb8b175016578bd3cc682",
+    "src/treemapmix/data.py": "d18b9abd967d5d3435593a0cefd1ccd9dfa6e9b26e2fe6ef0b72cf9afc7ea2b5",
     "src/treemapmix/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/treemapmix/integrations/timm.py": "f9ed0843b7e5a38862f8519106f5284281837e6e05827d9dec96f5097cf24f2b",
     "src/treemapmix/layout.py": "51f769c1569b42e798e887c1f7e665d8e6d5483fe5cd4d68f6a32114a0afca60",
@@ -186,13 +186,14 @@
     "cuda_amp_training_validation": "passed; checkpoint contains optimizer updates and GradScaler state; finite model parameters",
     "cuda_smoke_metric": {
       "epoch": 0,
-      "loss": 1.3958663145701091,
+      "loss": 1.3962393204371135,
       "accuracy": 0.2,
       "valid_views": 12,
       "unmixed_group_fraction": 0.0
-    }
+    },
+    "augmentation_tests_with_cuda_rng_regression": 7
   },
-  "published_install": "Installed exact GitHub commit 202a7c446afd674b93359b6ccb6d7cf656f3399f; all core module bytes match; minimal forward/backward example passes",
+  "published_install": "Initial published revision installed in independent environment; final release-tag installation verified separately during publication",
   "backbone_runtime": {
     "timm": "1.0.30",
     "models": {

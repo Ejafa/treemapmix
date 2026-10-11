@@ -16,7 +16,7 @@ def _seeded(seed):
     numpy = sys.modules.get("numpy")
     numpy_state = numpy.random.get_state() if numpy is not None else None
     with torch.random.fork_rng(devices=[]):
-        torch.manual_seed(seed)
+        torch.default_generator.manual_seed(seed)
         random.seed(seed)
         if numpy is not None:
             numpy.random.seed(seed % 2**32)

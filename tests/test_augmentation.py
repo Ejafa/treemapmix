@@ -12,6 +12,22 @@ from treemapmix.layout import _apply_box_symmetry, _apply_box_symmetry_rect
 from treemapmix.schedules import AlphaScheduler, KScheduler
 
 
+def test_group_seeding_preserves_training_rng():
+    import random
+    from treemapmix.data import _seeded
+
+    cpu_state = torch.get_rng_state()
+    python_state = random.getstate()
+    cuda_state = torch.cuda.get_rng_state() if torch.cuda.is_available() else None
+    with _seeded(123):
+        torch.rand(3)
+        random.random()
+    assert torch.equal(torch.get_rng_state(), cpu_state)
+    assert random.getstate() == python_state
+    if cuda_state is not None:
+        assert torch.equal(torch.cuda.get_rng_state(), cuda_state)
+
+
 @pytest.mark.parametrize("height,width", [(24, 24), (17, 31)])
 def test_canvas_and_symmetry_coverage(height, width):
     torch.manual_seed(3)
