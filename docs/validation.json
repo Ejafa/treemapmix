@@ -192,5 +192,14 @@
       "unmixed_group_fraction": 0.0
     }
   },
-  "published_install": "Installed exact GitHub commit 202a7c446afd674b93359b6ccb6d7cf656f3399f; all core module bytes match; minimal forward/backward example passes"
+  "published_install": "Installed exact GitHub commit 202a7c446afd674b93359b6ccb6d7cf656f3399f; all core module bytes match; minimal forward/backward example passes",
+  "backbone_runtime": {
+    "timm": "1.0.30",
+    "models": {
+      "vit_wee_patch16_reg1_gap_256": "256px CPU forward/backward with sparse mixed loss passed",
+      "vit_little_patch16_reg1_gap_256": "256px CPU forward/backward with sparse mixed loss passed",
+      "vit_medium_patch16_reg1_gap_256": "256px CPU forward/backward with sparse mixed loss passed",
+      "vit_betwixt_patch16_reg1_gap_256": "256px CPU forward/backward with sparse mixed loss passed"
+    }
+  }
 }
