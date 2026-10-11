@@ -4,6 +4,8 @@
 
 Historical source: [LabelMix commit 814678aed0481ecc2c8046fae6419cd9323e3471](https://github.com/Ejafa/LabelMix/tree/814678aed0481ecc2c8046fae6419cd9323e3471). Its embedded timm version is `1.0.25.dev0`; it is a development fork, not an installable version pin. Its model, dataset, optimizer, training, and experiment sources remain available at that commit.
 
+LabelMix is an access-restricted author archive; its source and paper links require repository access. This public release contains the selected recipe mapping and source identifiers, while the historical codebase retains its existing visibility.
+
 The fork descends from verified upstream timm commit [370df821](https://github.com/huggingface/pytorch-image-models/commit/370df82133b13cad31458b9525e067011f4bae5c). Against that base, model constructors and optimizers are unchanged; the model checkpoint helper was changed to step-based resume, and the HF dataset reader gained a local Arrow cache path. Neither modification is needed by the release's ImageFolder reader and independent epoch-boundary checkpoint implementation.
 
 This release uses the paper's stable log-domain PL formulation exclusively. The historical code used probability-space subtraction/clamping and processed repeated target entries separately. The new PL requires distinct active labels. Its natural-frequency `unmixed` fallback is explicit and preserves original counts but changes augmentation for repeated-label groups. Existing paper accuracy/calibration numbers are not attributed to this release, and no historical training runs have been repeated here.

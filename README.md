@@ -68,7 +68,7 @@ PL follows the paper's log-domain remaining-class normalization. Label-weight pa
 
 For SCE, use `TreemapMix(require_distinct=False, duplicate_policy="allow")`. For PL/mixed on natural-frequency data, the explicitly selected `duplicate_policy="unmixed"` emits each original image once when a group has repeated labels. The training example reports this fraction. This policy changes historical ImageNet-LT behavior.
 
-The old probability-space PL implementation is not included. Reported paper results were produced by the historical [LabelMix code](https://github.com/Ejafa/LabelMix/tree/814678aed0481ecc2c8046fae6419cd9323e3471); this release provides the stable mathematical objective with documented production handling.
+The old probability-space PL implementation is not included. Reported paper results were produced by the historical [LabelMix code](https://github.com/Ejafa/LabelMix/tree/814678aed0481ecc2c8046fae6419cd9323e3471), retained in an access-restricted author archive; this public release provides the stable mathematical objective with documented production handling.
 
 ## Tests and citation
 
