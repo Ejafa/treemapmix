@@ -1,0 +1,169 @@
+{
+  "version": "0.1.0",
+  "validation_date": "2026-10-11",
+  "historical_source_commit": "814678aed0481ecc2c8046fae6419cd9323e3471",
+  "environment": {
+    "python": "3.12.14",
+    "platform": "win32",
+    "torch": "2.14.1+cpu",
+    "torchvision": "0.29.1+cpu",
+    "timm": "1.0.30"
+  },
+  "pytest_passed": 24,
+  "extraction": {
+    "geometry": "exact",
+    "renderer": "exact",
+    "direct_filtered_sampler": "exact",
+    "balanced_schedule": "exact",
+    "natural_schedule": "exact",
+    "alpha_and_k_schedules": "exact",
+    "loss_comparisons": {
+      "sce_torch.float32": "value and gradient agree",
+      "pl_distinct_well_conditioned_torch.float32": "value and gradient agree",
+      "mixed_distinct_well_conditioned_torch.float32": "value and gradient agree",
+      "sce_repeated_torch.float32": "value and gradient agree",
+      "sce_torch.float64": "value and gradient agree",
+      "pl_distinct_well_conditioned_torch.float64": "value and gradient agree",
+      "mixed_distinct_well_conditioned_torch.float64": "value and gradient agree",
+      "sce_repeated_torch.float64": "value and gradient agree"
+    },
+    "renderer_views_per_second": {
+      "historical": 1468.642285178292,
+      "extracted": 1401.9759450905851
+    },
+    "source_commit": "814678aed0481ecc2c8046fae6419cd9323e3471"
+  },
+  "loader_measurements": {
+    "historical": {
+      "kind": "historical",
+      "views": 128,
+      "views_per_second": [
+        286.22053836927154,
+        346.81805273526993,
+        342.4617219633995
+      ],
+      "baseline_rss_mib": 307.98046875,
+      "peak_increment_mib": 132.3828125,
+      "shape": [
+        128,
+        3,
+        128,
+        128
+      ],
+      "workers": 0,
+      "batch_size": 16,
+      "k": 4,
+      "buffer": 64
+    },
+    "extracted": {
+      "kind": "extracted",
+      "views": 128,
+      "views_per_second": [
+        358.384804602219,
+        489.4676502302675,
+        481.72820001013656
+      ],
+      "baseline_rss_mib": 226.09375,
+      "peak_increment_mib": 71.9140625,
+      "shape": [
+        128,
+        3,
+        128,
+        128
+      ],
+      "workers": 0,
+      "batch_size": 16,
+      "k": 4,
+      "buffer": 64
+    }
+  },
+  "distributed_checks": "All three objectives: global scalar mean and DDP gradients match single-process reference. Full two-process file-store Gloo timm training/validation passes both balanced 12-view and natural 9-view cases, including an empty final rank.",
+  "checkpoint_resume": {
+    "checkpoint_resume": "model state exactly matches uninterrupted two-epoch training",
+    "epochs": 2
+  },
+  "unverified": [
+    "CUDA and NCCL execution",
+    "Full ImageNet/COCO training",
+    "Historical accuracy reproduction"
+  ],
+  "known_environment_limitations": [
+    "Windows torchrun static TCP rendezvous requests libuv missing from the installed PyTorch build; file-store Gloo works",
+    "Preserved TorchScript geometry emits a deprecation warning on tested PyTorch"
+  ],
+  "preset_smokes": [
+    {
+      "config": "imagenet_lt_pl.yaml",
+      "metric": {
+        "epoch": 0,
+        "loss": 2.1278892205311704,
+        "accuracy": 0.14285714285714285,
+        "valid_views": 13,
+        "unmixed_group_fraction": 0.6666666666666666
+      }
+    },
+    {
+      "config": "imagenet_lt_sce.yaml",
+      "metric": {
+        "epoch": 0,
+        "loss": 1.5075613392723932,
+        "accuracy": 0.2,
+        "valid_views": 9,
+        "unmixed_group_fraction": 0.0
+      }
+    },
+    {
+      "config": "imagenet_mixed.yaml",
+      "metric": {
+        "epoch": 0,
+        "loss": 1.506751298904419,
+        "accuracy": 0.2,
+        "valid_views": 12,
+        "unmixed_group_fraction": 0.0
+      }
+    },
+    {
+      "config": "imagenet_pl.yaml",
+      "metric": {
+        "epoch": 0,
+        "loss": 1.8213929070366754,
+        "accuracy": 0.14285714285714285,
+        "valid_views": 18,
+        "unmixed_group_fraction": 0.0
+      }
+    },
+    {
+      "config": "imagenet_sce.yaml",
+      "metric": {
+        "epoch": 0,
+        "loss": 1.561565597852071,
+        "accuracy": 0.2,
+        "valid_views": 12,
+        "unmixed_group_fraction": 0.0
+      }
+    }
+  ],
+  "model_compatibility": {
+    "tested_timm": "1.0.30",
+    "models": {
+      "vit_wee_patch16_reg1_gap_256": "architecture arguments match historical source",
+      "vit_little_patch16_reg1_gap_256": "architecture arguments match historical source",
+      "vit_medium_patch16_reg1_gap_256": "architecture arguments match historical source",
+      "vit_betwixt_patch16_reg1_gap_256": "architecture arguments match historical source"
+    }
+  },
+  "upstream_timm_base": "370df82133b13cad31458b9525e067011f4bae5c",
+  "clean_install": "Wheel module bytes match source; import is from independent environment site-packages; 24 tests pass",
+  "implementation_sha256": {
+    "src/treemapmix/__init__.py": "7949a8f51d0bc6fe699e0c21bda8391ce297e8ebd36ac076bbd46219401d5323",
+    "src/treemapmix/augmentation.py": "40d15853ddca023cf13fc7cfd7f3a255513bcd084d1e76bfc9667b570de82339",
+    "src/treemapmix/data.py": "fa89733fb9a1397802fe89723409cc9f4a5ceb22e35bb8b175016578bd3cc682",
+    "src/treemapmix/integrations/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/treemapmix/integrations/timm.py": "f9ed0843b7e5a38862f8519106f5284281837e6e05827d9dec96f5097cf24f2b",
+    "src/treemapmix/layout.py": "51f769c1569b42e798e887c1f7e665d8e6d5483fe5cd4d68f6a32114a0afca60",
+    "src/treemapmix/losses.py": "08721289a7e843d2dee31a6e752ff6fcba0f419f5aa90ab939779d8294171190",
+    "src/treemapmix/schedules.py": "20e46fc031fce5db3efcca6ee3370ec6e1bdb530a08bd564720d7668c018634b",
+    "examples/minimal.py": "c03358abec028bb186693947e501d7be2a250f3cad57e4b95f9e16a0641a6f10",
+    "examples/train_timm.py": "a7f8457f2103853697dec25cd5965a6b1fc267c71d841d69cea583100038d80d"
+  }
+}
