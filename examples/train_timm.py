@@ -179,7 +179,9 @@ def main():
     amp = bool(cfg.get("amp", True)) and device.type == "cuda"
     amp_dtype = (
         torch.bfloat16
-        if device.type == "cuda" and torch.cuda.is_bf16_supported()
+        if device.type == "cuda"
+        and torch.cuda.get_device_capability()[0] >= 8
+        and torch.cuda.is_bf16_supported()
         else torch.float16
     )
     scaler = torch.amp.GradScaler("cuda", enabled=amp and amp_dtype == torch.float16)
@@ -248,9 +250,7 @@ def main():
                 for layer in batch_norm:
                     layer.eval()
             optimizer.zero_grad(set_to_none=True)
-            with torch.autocast(
-                device_type=device.type, dtype=amp_dtype, enabled=amp
-            ):
+            with torch.autocast(device_type=device.type, dtype=amp_dtype, enabled=amp):
                 logits = wrapped(images)
                 loss = criterion(logits, target)
             if empty_rank:
